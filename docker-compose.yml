@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: facility-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: facility
+      POSTGRES_USER: facility
+      POSTGRES_PASSWORD: facility
+    ports:
+      - "5432:5432"
+    volumes:
+      - facility_data:/var/lib/postgresql/data
+
+volumes:
+  facility_data:

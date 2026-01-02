@@ -1,0 +1,51 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/facility
+    username: facility
+    password: facility
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update        # << this is what creates tables
+  mail:
+    host: localhost
+    port: 1025
+    username:
+    password:
+    properties:
+      mail:
+        smtp:
+          auth: false
+          starttls:
+            enable: false   # dev only; later use Flyway
+server:
+  port: 8080
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.springframework.jdbc.datasource: debug
+    org.hibernate.type.descriptor.sql.BasicBinder: trace
+
+app:
+  bootstrap:
+    enabled: true
+    tenant:
+      code: demo
+      name: Demo Tenant
+    admin:
+      email: admin@example.com
+      password: Admin123!
+  security:
+    jwt:
+      secret: "change-this-dev-secret-to-a-long-random-string-32chars-min"
+      issuer: "facility-service"
+      access-token-validity-seconds: 3600    # 15 minutes
+  storage:
+    base-path: ./data/uploads
+    max-file-size-mb: 20
+  notifications:
+    email:
+      enabled: false        # set to true when SMTP is ready
+      from-address: "no-reply@facility.local"
+      to-admin-address: "admin@example.com"
