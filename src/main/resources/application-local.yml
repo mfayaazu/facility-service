@@ -1,8 +1,8 @@
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/facility
-    username:
-    password:
+    username: facility
+    password: facility
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
@@ -35,7 +35,7 @@ app:
       name: Demo Tenant
     admin:
       email: admin@example.com
-      password:
+      password: Admin123!
   security:
     jwt:
       secret: "change-this-dev-secret-to-a-long-random-string-32chars-min"
